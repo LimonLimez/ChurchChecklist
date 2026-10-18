@@ -1,0 +1,323 @@
+{
+  "_about": "Master list of every media team task. Edit this file to add, remove, or reword items. 'automation' marks what could be handed to a script or AI later: manual = a person must do it, assist = AI could help or double-check, auto = could be fully automated.",
+  "checklists": [
+    {
+      "id": "thursday",
+      "title": "Thursday Prep",
+      "summary": "Get everything for Sunday into ProPresenter and set up the live streams, so Sunday is just pressing buttons.",
+      "phases": [
+        {
+          "id": "gather",
+          "title": "1. Gather what you need",
+          "items": [
+            {
+              "id": "get-setlist",
+              "title": "Get the song list for Sunday",
+              "details": "Get the songs, the order they'll be sung in, and the song arrangement (verse/chorus order) from the worship leader.",
+              "wiki": "lyrics",
+              "automation": "assist"
+            },
+            {
+              "id": "get-sermon",
+              "title": "Get the sermon slides and scripture references",
+              "details": "Get the sermon title, slides (if any), and every scripture reference and Bible translation the pastor will use.",
+              "wiki": "sermon-slides",
+              "automation": "manual"
+            },
+            {
+              "id": "get-announcements",
+              "title": "Get this week's announcements",
+              "details": "Get the announcement slides or text, plus any videos or special items (baby dedication, baptism, guest speaker).",
+              "wiki": "announcements",
+              "automation": "manual"
+            }
+          ]
+        },
+        {
+          "id": "propresenter",
+          "title": "2. Build it in ProPresenter",
+          "items": [
+            {
+              "id": "upload-lyrics",
+              "title": "Upload lyrics for every song",
+              "details": "Check the ProPresenter Library first. If a song is already there, reuse it. If not, import or type the lyrics.",
+              "wiki": "lyrics",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "check-lyrics",
+              "title": "Check lyrics for spelling, line breaks, and arrangement",
+              "details": "Every slide easy to read (2 to 4 lines), no typos, sections in the same order the band will play them.",
+              "wiki": "lyrics",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "verify-song-keys",
+              "title": "Verify keys",
+              "details": "Confirm the song keys and arrangements with the worship leader so the lyric slides match what will actually be sung. (Media director: confirm this item means song keys and not stream keys. Stream keys have their own item below.)",
+              "wiki": "lyrics",
+              "automation": "manual"
+            },
+            {
+              "id": "upload-slides",
+              "title": "Upload the sermon slides",
+              "details": "Import the pastor's slides into ProPresenter and check each one shows correctly on the screens.",
+              "wiki": "sermon-slides",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "add-scripture",
+              "title": "Add scripture slides",
+              "details": "Add every scripture reference in the translation the pastor uses. Double-check the reference numbers.",
+              "wiki": "sermon-slides",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "add-announcements",
+              "title": "Add announcements and countdown",
+              "details": "Add the announcement slides and the pre-service countdown timer.",
+              "wiki": "announcements",
+              "app": "propresenter",
+              "automation": "manual"
+            },
+            {
+              "id": "build-playlist",
+              "title": "Build Sunday's playlist in order of service",
+              "details": "Make a new playlist named with Sunday's date (for example 2026-10-25 Sunday). Put everything in the order it will happen: countdown, welcome, songs, announcements, sermon, closing.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "livestream-items",
+              "title": "Make sure everything the live stream needs is in ProPresenter",
+              "details": "Check the items the live stream viewers will see: sermon title, scripture, lower thirds (names on screen), and the end-of-stream slide.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "run-through",
+              "title": "Click through the whole playlist once",
+              "details": "Go through every slide from start to finish. Look for typos, blank slides, missing media, and anything out of order.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "assist"
+            }
+          ]
+        },
+        {
+          "id": "stream-setup",
+          "title": "3. Set up the live stream",
+          "items": [
+            {
+              "id": "youtube-details",
+              "title": "Set up the YouTube stream: title, description, thumbnail",
+              "details": "Use the standard title format (see the YouTube page). Add the sermon title, the pastor's name, and the date.",
+              "wiki": "youtube",
+              "app": "chrome",
+              "automation": "auto"
+            },
+            {
+              "id": "facebook-details",
+              "title": "Set up the Facebook stream: title and description",
+              "details": "Use the same title and description as YouTube.",
+              "wiki": "facebook",
+              "app": "chrome",
+              "automation": "auto"
+            },
+            {
+              "id": "verify-stream-keys",
+              "title": "Verify stream keys in Streamlabs",
+              "details": "Make sure Streamlabs is connected to the church YouTube channel and the church Facebook page, and that the stream keys haven't changed.",
+              "wiki": "stream-keys",
+              "app": "streamlabs",
+              "automation": "assist"
+            },
+            {
+              "id": "streamlabs-titles",
+              "title": "Enter the stream information in Streamlabs",
+              "details": "In Streamlabs, put the title and description for each platform (YouTube and Facebook) so they're ready on Sunday.",
+              "wiki": "streamlabs",
+              "app": "streamlabs",
+              "automation": "assist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sunday",
+      "title": "Sunday Service",
+      "summary": "Set up, run worship lyrics, go live when worship ends, then wrap up.",
+      "phases": [
+        {
+          "id": "setup",
+          "title": "1. Before service (arrive early)",
+          "items": [
+            {
+              "id": "power-on",
+              "title": "Turn on the MacBook, screens, and projectors/TVs",
+              "details": "Plug in the MacBook's charger. Turn on Do Not Disturb so pop-up notifications don't show on the screens.",
+              "wiki": "macbook",
+              "automation": "manual"
+            },
+            {
+              "id": "open-propresenter",
+              "title": "Open ProPresenter and load today's playlist",
+              "details": "Check the playlist has today's date. If you can't find it, check with whoever did Thursday prep.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "auto"
+            },
+            {
+              "id": "check-screens",
+              "title": "Check that the audience and stage screens are showing correctly",
+              "details": "Put a slide up and check it on every screen, including the stage screen the band sees.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "manual"
+            },
+            {
+              "id": "check-livestream-items",
+              "title": "Confirm everything for the live stream is in ProPresenter",
+              "details": "Check the sermon slides, scripture, lower thirds, and end slide are all in today's playlist. If anything was added after Thursday, add it now.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "assist"
+            },
+            {
+              "id": "open-streamlabs",
+              "title": "Open Streamlabs and check the scenes",
+              "details": "Click through each scene (before stream, camera, slides, end) and make sure the camera and slides show up.",
+              "wiki": "streamlabs",
+              "app": "streamlabs",
+              "automation": "auto"
+            },
+            {
+              "id": "check-audio",
+              "title": "Check the stream audio levels",
+              "details": "Watch the Streamlabs audio mixer while the band sound checks. Levels should move, but never stay in the red.",
+              "wiki": "streamlabs",
+              "app": "streamlabs",
+              "automation": "assist"
+            },
+            {
+              "id": "check-stream-info",
+              "title": "Double-check the stream titles and descriptions",
+              "details": "Make sure YouTube and Facebook both have today's title, not last week's.",
+              "wiki": "streamlabs",
+              "app": "streamlabs",
+              "automation": "auto"
+            },
+            {
+              "id": "check-internet",
+              "title": "Check the internet connection",
+              "details": "Make sure the MacBook is on the church network (wired if possible). Load YouTube to confirm it works.",
+              "wiki": "troubleshooting",
+              "automation": "auto"
+            }
+          ]
+        },
+        {
+          "id": "worship",
+          "title": "2. During worship",
+          "items": [
+            {
+              "id": "countdown",
+              "title": "Run the countdown before service",
+              "details": "Start the countdown in ProPresenter so it ends right when service starts.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "manual"
+            },
+            {
+              "id": "run-lyrics",
+              "title": "Run the lyrics for each song",
+              "details": "Stay one step ahead of the singers. Change the slide right before the first word of the next line. Remember: we do NOT go live yet.",
+              "wiki": "propresenter",
+              "app": "propresenter",
+              "automation": "manual"
+            }
+          ]
+        },
+        {
+          "id": "golive",
+          "title": "3. Go live (after worship ends)",
+          "items": [
+            {
+              "id": "go-live",
+              "title": "Click Go Live in Streamlabs when worship ends",
+              "details": "Wait for worship to fully end, then click Go Live. Make sure both YouTube and Facebook are turned on before you confirm.",
+              "wiki": "going-live",
+              "app": "streamlabs",
+              "automation": "manual"
+            },
+            {
+              "id": "confirm-live",
+              "title": "Confirm the stream is live on YouTube and Facebook",
+              "details": "Check from a phone. Make sure you can see and hear the stream on both platforms.",
+              "wiki": "going-live",
+              "automation": "auto"
+            },
+            {
+              "id": "run-sermon",
+              "title": "Run the sermon slides and scripture",
+              "details": "Follow the pastor. Switch Streamlabs scenes when slides or scripture should show on the stream.",
+              "wiki": "going-live",
+              "app": "propresenter",
+              "automation": "manual"
+            },
+            {
+              "id": "watch-health",
+              "title": "Keep an eye on the stream",
+              "details": "Every few minutes, check the Streamlabs status bar for dropped frames, and check that audio is still moving.",
+              "wiki": "troubleshooting",
+              "app": "streamlabs",
+              "automation": "auto"
+            }
+          ]
+        },
+        {
+          "id": "wrapup",
+          "title": "4. After service",
+          "items": [
+            {
+              "id": "end-stream",
+              "title": "Switch to the end scene, then click End Stream",
+              "details": "Leave the end slide up for about 30 seconds before ending the stream.",
+              "wiki": "going-live",
+              "app": "streamlabs",
+              "automation": "manual"
+            },
+            {
+              "id": "confirm-saved",
+              "title": "Confirm the video saved on YouTube and Facebook",
+              "details": "Check that the recording shows up on the church channel and page.",
+              "wiki": "going-live",
+              "automation": "auto"
+            },
+            {
+              "id": "clear-shutdown",
+              "title": "Clear the screens, close the apps, turn off the screens",
+              "details": "Clear everything in ProPresenter, close Streamlabs, and turn off the projectors/TVs.",
+              "wiki": "macbook",
+              "automation": "manual"
+            },
+            {
+              "id": "report-issues",
+              "title": "Write down anything that went wrong",
+              "details": "Use the notes box on any item that had a problem so we can fix it before next week.",
+              "wiki": "troubleshooting",
+              "automation": "manual"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

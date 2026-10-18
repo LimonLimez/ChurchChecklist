@@ -1,0 +1,18 @@
+{
+  "_comment": "Apps the wiki is allowed to open. 'mac' is the app name as it appears in /Applications (without .app). 'windows' is optional and only used when previewing on a PC.",
+  "propresenter": {
+    "label": "ProPresenter",
+    "mac": "ProPresenter",
+    "windows": "C:\\Program Files\\Renewed Vision\\ProPresenter\\ProPresenter.exe"
+  },
+  "streamlabs": {
+    "label": "Streamlabs",
+    "mac": "Streamlabs Desktop",
+    "windows": "C:\\Program Files\\Streamlabs OBS\\Streamlabs OBS.exe"
+  },
+  "chrome": {
+    "label": "Google Chrome",
+    "mac": "Google Chrome",
+    "windows": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  }
+}
