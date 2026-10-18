@@ -3,33 +3,31 @@
 <table class="infobox">
 <caption>YouTube</caption>
 <tr><td colspan="2" class="infobox-image"><img src="/images/logos/youtube.svg" width="88" height="88" alt="YouTube logo"></td></tr>
+<tr><th>Our channel</th><td>GT Church</td></tr>
 <tr><th>Used for</th><td>Sunday live stream and past services</td></tr>
 <tr><th>Streamed from</th><td>[[Streamlabs]]</td></tr>
 <tr><th>Managed in</th><td>YouTube Studio</td></tr>
 </table>
 
-We stream every Sunday service to the church YouTube channel from [[Streamlabs]], at the same time as [[Facebook]].
+We stream every Sunday service to the **GT Church** YouTube channel from [[Streamlabs]], at the same time as [[Facebook]].
 
-> **To fill in:** the link to our channel, and who has access to manage it.
+## Title
 
-## Title format
-
-Use the same format every week so people can find our services:
+The date, a dash, then GT CHURCH:
 
 ```
-Sunday Service | [Sermon Title] | [Pastor Name] | [Month Day, Year]
+October 18, 2026 - GT CHURCH
 ```
 
-## Description template
+Change the date to that Sunday's date. You type it in the Go Live window in [[Streamlabs]].
+
+## Description
+
+The description is our CCLI streaming license. It is the same every week:
 
 ```
-Welcome to Glad Tidings Church in Anderson, Indiana!
-
-Today's message: [Sermon Title]
-Speaker: [Pastor Name]
-Scripture: [References]
-
-[Add church website, giving link, and social links here]
+CCLI Streaming Plus License™
+21309671
 ```
 
 ## Checking that we're live
@@ -38,6 +36,6 @@ Open the channel on a phone and look for the red **LIVE** label. Make sure you c
 
 ## YouTube Studio
 
-**YouTube Studio** (studio.youtube.com) is where you manage the channel: titles, thumbnails, and past streams. If a title was wrong, you can fix it there after the stream.
+**YouTube Studio** (studio.youtube.com) is where you manage the channel: titles and past streams. If a title was wrong, you can fix it there after the stream.
 
 [[open:chrome|Open Chrome]]

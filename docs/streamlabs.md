@@ -9,7 +9,7 @@
 <tr><th>Goes live</th><td>Sunday, after worship ends</td></tr>
 </table>
 
-**Streamlabs** (Streamlabs Desktop) is the program that sends our service to the internet. It mixes the camera, the [[ProPresenter]] slides, and the sound into one video, and sends it to [[YouTube]] and [[Facebook]] at the same time.
+**Streamlabs** (Streamlabs Desktop) is the program that sends our service to the internet. It mixes the camera, the [[ProPresenter]] lower third, and the sound into one video, and sends it to [[YouTube]] and [[Facebook]] at the same time.
 
 [[open:streamlabs]]
 
@@ -17,34 +17,35 @@
 
 [[map:streamlabs]]
 
-> **Screenshot needed:** a real screenshot of our Streamlabs window. Save it as `docs/images/streamlabs-main.png`.
-
 ## Our scenes
 
-> **To fill in:** our real scene names, in the order we use them.
+A scene is one "look" for the stream. We have three. Click a name in the **Scenes** box to switch.
 
-| Scene | When to use it |
-|-------|----------------|
-| Before stream | Logo or countdown while setting up |
-| Camera | Pastor preaching |
-| Slides | Scripture or sermon slides full screen |
-| End | After service, before ending the stream |
+<div class="shot-row">
+<figure><img src="/docs/images/streamlabs-main-output.webp" alt="The Main OUTPUT scene showing the sanctuary camera"><figcaption><strong>Main OUTPUT.</strong> The sanctuary camera with the ProPresenter lower third on top. Its sources are Video Capture Device and ProPresenter Real Lower Third.</figcaption></figure>
+<figure><img src="/docs/images/streamlabs-audience-view.webp" alt="The Audience View scene showing the computer screen"><figcaption><strong>Audience View.</strong> Shows the computer screen. Its one source is Display Capture.</figcaption></figure>
+<figure><img src="/docs/images/streamlabs-camera-setup.webp" alt="The Camera SETUP scene showing the camera with a grid"><figcaption><strong>Camera SETUP.</strong> The camera with a grid on top (source: Grid), for lining up the camera shot.</figcaption></figure>
+</div>
+
+> **To fill in:** which scene is on while we are live (we think Main OUTPUT), and whether anyone ever switches to Audience View. The Scenes list scrolls, so tell us if there are more below.
 
 ## Putting in the stream information
 
-Every stream needs a **title** and a **description** for both YouTube and Facebook.
+Every stream needs a title and a description. You enter them in the Go Live window.
+
+[[map:streamlabs-golive]]
+
+To enter the stream information:
 
 1. Click **Go Live** at the bottom right. The Go Live window opens.
-2. Make sure **YouTube** and **Facebook** are both switched on.
-3. Type the title and description. Use the format on the [[YouTube]] page for both.
-4. On Thursday, close the window here. On Sunday, click **Confirm & Go Live** once worship ends.
-
-> **Screenshot needed:** the Go Live window, with arrows on the YouTube and Facebook switches and the title boxes.
+2. On the left, switch on **YouTube** and **Facebook**.
+3. **Title:** the date, a dash, then `GT CHURCH`. For example: `October 18, 2026 - GT CHURCH`. Use that Sunday's date.
+4. **Description:** the CCLI line from the [[YouTube]] page.
+5. **Facebook Destination:** `Share to a Page You Manage`. **Facebook Page:** `GT Church | Church`. See [[Facebook]].
+6. On Thursday, close the window without going live. On Sunday, click **Confirm & Go Live** once worship ends.
 
 ## Streaming to two places at once
 
-Streamlabs calls this **multistreaming**. Sending to both YouTube and Facebook in landscape needs a **Streamlabs Ultra** subscription. If the Go Live window only lets you pick one platform, the subscription may have lapsed. Tell the media director.
-
-The platform you signed in to Streamlabs with always goes live and can't be switched off in the Go Live window.
+Streamlabs calls this **multistreaming**. Sending to both YouTube and Facebook in landscape needs a **Streamlabs Ultra** subscription. If the Go Live window ever lets you pick only one, the subscription may have lapsed. Tell the media director.
 
 See also: [[going-live|Going live]], [[connected-accounts|Connected accounts]].

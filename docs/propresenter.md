@@ -17,7 +17,18 @@
 
 [[map:propresenter]]
 
-> **Screenshot needed:** a real screenshot of our ProPresenter window with arrows on the parts above. Save it as `docs/images/propresenter-main.png`.
+## Our Sunday playlist
+
+Each Sunday has its own playlist, named by date (like **Oct 18**). Inside it, the items sit under four section headers:
+
+| Section | What goes in it | Oct 18 example |
+|---------|-----------------|----------------|
+| **PreService** | The Announcements slides and the pre-service video | Announcements, autumn_foliage-4K (5:10) |
+| **Welcome** | The welcome video and announcement slides | fall_church_welcome-HD 1080 (1:11), Announcement Slides Blue |
+| **Worship** | The songs, in the order they'll be sung | This Changes Everything, Living Hope, It Is Well With My Soul, I Give Myself Away |
+| **MESSAGE** | The sermon | Love Says Yes - This Is Our City |
+
+The Announcements presentation starts with the PreShow Loop video and a "Please silence your phone" slide. After that come church slides like Ways to give and Membership Class.
 
 ## Words you'll hear
 
@@ -30,15 +41,15 @@
 
 ## Clearing the screen
 
-If the wrong thing shows up, don't panic. The clear buttons next to the preview take things off the screen:
+If the wrong thing shows up, don't panic. The circled **X** next to the preview and the icons down the right edge take things off the screen:
 
-| Button | What it removes |
+| Button | What it clears |
 |--------|-----------------|
-| **Clear All** | Everything. Use it when in doubt. |
-| **Clear slide** | Just the words (lyrics, scripture, sermon slide) |
-| **Clear media** | Backgrounds and videos |
-| **Clear props / messages** | Logos, lower thirds, and on-screen messages |
-| **Clear audio** | Music or sound playing from ProPresenter |
+| **Circled X** | The main clear button. Use it when in doubt. |
+| **Slide icon** | Just the words (lyrics, scripture, sermon slide) |
+| **Media icon** | Backgrounds and videos |
+| **Props and messages icons** | Logos, lower thirds, and on-screen messages |
+| **Audio icon** | Music or sound playing from ProPresenter |
 
 ## How we use it
 

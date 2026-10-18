@@ -6,12 +6,12 @@
 
 ## Step by step
 
-1. **Before service:** open [[Streamlabs]] and switch to the **Before stream** scene. [[open:streamlabs]]
-2. **Worship ends:** click **Go Live**. Check that both [[YouTube]] and [[Facebook]] are on, then confirm.
-3. **Check it worked:** look on a phone. You should see and hear the stream on both.
-4. **Sermon:** switch scenes as needed, and run the slides and scripture in [[ProPresenter]].
-5. **Service ends:** switch to the **End** scene. Leave it for about 30 seconds.
-6. **Click End Stream.**
+1. **Before service:** open [[Streamlabs]] and check that the camera shows in the preview. [[open:streamlabs]]
+2. **Check the title.** Click **Go Live** and make sure the title has today's date, like `October 18, 2026 - GT CHURCH`. Then close the window.
+3. **Worship ends:** click **Go Live**. Check that **YouTube** and **Facebook** are both switched on, then click **Confirm & Go Live**.
+4. **Check it worked:** look on a phone. You should see and hear the stream on both [[YouTube]] and [[Facebook]].
+5. **Sermon:** run the slides and scripture in [[ProPresenter]]. Glance at the Streamlabs status bar for dropped frames.
+6. **Service is over:** click **End Stream**. While we're live, the Go Live button changes to End Stream.
 7. **Check the video saved** on YouTube and Facebook.
 
 > **Video needed:** a screen recording of going live and ending a stream.

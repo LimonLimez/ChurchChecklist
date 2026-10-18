@@ -9,7 +9,7 @@ Getting lyrics into [[ProPresenter]] is part of [[checklist:thursday|Thursday Pr
 3. **If it's new,** create a new presentation and add the lyrics.
 4. **Check every slide:** no typos, 2 to 4 lines per slide, easy to read.
 5. **Set the arrangement** (verse/chorus order) to match how the band will play it.
-6. **Add it to Sunday's playlist** in the right order.
+6. **Add it to Sunday's playlist** under the **Worship** section, in the order it will be sung.
 
 [[open:propresenter]]
 

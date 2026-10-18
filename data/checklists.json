@@ -40,7 +40,7 @@
             {
               "id": "upload-lyrics",
               "title": "Upload lyrics for every song",
-              "details": "Check the ProPresenter Library first. If a song is already there, reuse it. If not, import or type the lyrics.",
+              "details": "Check the ProPresenter Library first. If a song is already there, reuse it. If not, import or type the lyrics. Put the songs under Worship in the order they will be sung.",
               "wiki": "lyrics",
               "app": "propresenter",
               "automation": "assist"
@@ -63,7 +63,7 @@
             {
               "id": "upload-slides",
               "title": "Upload the sermon slides",
-              "details": "Import the pastor's slides into ProPresenter and check each one shows correctly on the screens.",
+              "details": "Import the pastor's slides into ProPresenter and check each one shows correctly on the screens. Put the sermon under MESSAGE.",
               "wiki": "sermon-slides",
               "app": "propresenter",
               "automation": "assist"
@@ -78,8 +78,8 @@
             },
             {
               "id": "add-announcements",
-              "title": "Add announcements and countdown",
-              "details": "Add the announcement slides and the pre-service countdown timer.",
+              "title": "Add announcements and the pre-service video",
+              "details": "Put the Announcements slides and the pre-service video under PreService. Put the welcome video and announcement slides under Welcome.",
               "wiki": "announcements",
               "app": "propresenter",
               "automation": "manual"
@@ -87,7 +87,7 @@
             {
               "id": "build-playlist",
               "title": "Build Sunday's playlist in order of service",
-              "details": "Make a new playlist named with Sunday's date (for example 2026-10-25 Sunday). Put everything in the order it will happen: countdown, welcome, songs, announcements, sermon, closing.",
+              "details": "Make a new playlist named with Sunday's date, like Oct 25. Put everything under the four section headers, in order: PreService, Welcome, Worship (the songs), and MESSAGE (the sermon).",
               "wiki": "propresenter",
               "app": "propresenter",
               "automation": "assist"
@@ -95,7 +95,7 @@
             {
               "id": "livestream-items",
               "title": "Make sure everything the live stream needs is in ProPresenter",
-              "details": "Check the items the live stream viewers will see: sermon title, scripture, lower thirds (names on screen), and the end-of-stream slide.",
+              "details": "Check the items the live stream viewers will see: sermon title, scripture, and lower thirds (names on screen).",
               "wiki": "propresenter",
               "app": "propresenter",
               "automation": "assist"
@@ -115,36 +115,28 @@
           "title": "3. Set up the live stream",
           "items": [
             {
-              "id": "youtube-details",
-              "title": "Set up the YouTube stream: title, description, thumbnail",
-              "details": "Use the standard title format (see the YouTube page). Add the sermon title, the pastor's name, and the date.",
-              "wiki": "youtube",
-              "app": "chrome",
-              "automation": "auto"
-            },
-            {
-              "id": "facebook-details",
-              "title": "Set up the Facebook stream: title and description",
-              "details": "Use the same title and description as YouTube.",
-              "wiki": "facebook",
-              "app": "chrome",
-              "automation": "auto"
-            },
-            {
               "id": "check-connections",
               "title": "Check that YouTube and Facebook are still connected in Streamlabs",
-              "details": "Click Go Live in Streamlabs and make sure the church YouTube channel and Facebook page are both listed and switched on. Close the window without going live.",
+              "details": "Open Streamlabs. The bottom left should say Logged In with the YouTube and Facebook icons. Click Go Live and make sure YouTube (GT Church) and Facebook are both listed and switched on. Close the window without going live.",
               "wiki": "connected-accounts",
               "app": "streamlabs",
               "automation": "assist"
             },
             {
-              "id": "streamlabs-titles",
-              "title": "Enter the stream information in Streamlabs",
-              "details": "In Streamlabs, put the title and description for each platform (YouTube and Facebook) so they're ready on Sunday.",
-              "wiki": "streamlabs",
+              "id": "youtube-details",
+              "title": "Set the stream title and description in Streamlabs",
+              "details": "In the Go Live window, the title is Sunday's date, a dash, and GT CHURCH (example: October 25, 2026 - GT CHURCH). The description is the CCLI Streaming Plus License line.",
+              "wiki": "youtube",
               "app": "streamlabs",
-              "automation": "assist"
+              "automation": "auto"
+            },
+            {
+              "id": "facebook-details",
+              "title": "Point Facebook at the GT Church page",
+              "details": "In the Go Live window, Facebook Destination is Share to a Page You Manage and Facebook Page is GT Church | Church. The title and description are the same as YouTube.",
+              "wiki": "facebook",
+              "app": "streamlabs",
+              "automation": "auto"
             }
           ]
         }
@@ -185,7 +177,7 @@
             {
               "id": "check-livestream-items",
               "title": "Confirm everything for the live stream is in ProPresenter",
-              "details": "Check the sermon slides, scripture, lower thirds, and end slide are all in today's playlist. If anything was added after Thursday, add it now.",
+              "details": "Check the sermon slides, scripture, and lower thirds are all in today's playlist. If anything was added after Thursday, add it now.",
               "wiki": "propresenter",
               "app": "propresenter",
               "automation": "assist"
@@ -193,7 +185,7 @@
             {
               "id": "open-streamlabs",
               "title": "Open Streamlabs and check the scenes",
-              "details": "Click through each scene (before stream, camera, slides, end) and make sure the camera and slides show up.",
+              "details": "Click through each scene (Main OUTPUT, Audience View, Camera SETUP) and make sure the camera shows up.",
               "wiki": "streamlabs",
               "app": "streamlabs",
               "automation": "auto"
@@ -201,7 +193,7 @@
             {
               "id": "check-audio",
               "title": "Check the stream audio levels",
-              "details": "Watch the Streamlabs audio mixer while the band sound checks. Levels should move, but never stay in the red.",
+              "details": "Watch the Mixer in Streamlabs while the band sound checks. The Scarlett 8i6 USB bar should move with the sound, but never stay in the red.",
               "wiki": "streamlabs",
               "app": "streamlabs",
               "automation": "assist"
@@ -209,7 +201,7 @@
             {
               "id": "check-stream-info",
               "title": "Double-check the stream titles and descriptions",
-              "details": "Make sure YouTube and Facebook both have today's title, not last week's.",
+              "details": "Click Go Live and make sure the title has today's date (Month D, YYYY - GT CHURCH), not last week's. Check that Facebook goes to the GT Church page. Then close the window.",
               "wiki": "streamlabs",
               "app": "streamlabs",
               "automation": "auto"
@@ -252,7 +244,7 @@
             {
               "id": "go-live",
               "title": "Click Go Live in Streamlabs when worship ends",
-              "details": "Wait for worship to fully end, then click Go Live. Make sure both YouTube and Facebook are turned on before you confirm.",
+              "details": "Wait for worship to fully end. Click Go Live, check that YouTube and Facebook are both switched on, then click Confirm & Go Live.",
               "wiki": "going-live",
               "app": "streamlabs",
               "automation": "manual"
@@ -267,7 +259,7 @@
             {
               "id": "run-sermon",
               "title": "Run the sermon slides and scripture",
-              "details": "Follow the pastor. Switch Streamlabs scenes when slides or scripture should show on the stream.",
+              "details": "Follow the pastor and run the slides and scripture in ProPresenter. Watch the Streamlabs preview to make sure viewers see what you expect.",
               "wiki": "going-live",
               "app": "propresenter",
               "automation": "manual"
@@ -288,8 +280,8 @@
           "items": [
             {
               "id": "end-stream",
-              "title": "Switch to the end scene, then click End Stream",
-              "details": "Leave the end slide up for about 30 seconds before ending the stream.",
+              "title": "Click End Stream",
+              "details": "When the service is completely over, click End Stream. (While we are live, the Go Live button changes to End Stream.)",
               "wiki": "going-live",
               "app": "streamlabs",
               "automation": "manual"

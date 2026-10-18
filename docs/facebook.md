@@ -3,6 +3,7 @@
 <table class="infobox">
 <caption>Facebook</caption>
 <tr><td colspan="2" class="infobox-image"><img src="/images/logos/facebook.svg" width="88" height="88" alt="Facebook logo"></td></tr>
+<tr><th>Our page</th><td>GT Church | Church</td></tr>
 <tr><th>Used for</th><td>Sunday live stream on the church page</td></tr>
 <tr><th>Streamed from</th><td>[[Streamlabs]]</td></tr>
 <tr><th>Same title as</th><td>[[YouTube]]</td></tr>
@@ -10,11 +11,17 @@
 
 We stream every Sunday service to the church Facebook page at the same time as [[YouTube]], from [[Streamlabs]].
 
-> **To fill in:** the link to our Facebook page, and who is an admin.
+## Setting it up in the Go Live window
 
-## Title and description
+When you click **Go Live** in Streamlabs, Facebook has these settings:
 
-Use the **same title and description** as on the [[YouTube]] page.
+| Setting | What we use |
+|---------|-------------|
+| Facebook Destination | `Share to a Page You Manage` |
+| Facebook Page | `GT Church | Church` |
+| Primary Chat | Facebook |
+
+The title and description are the same as on [[YouTube]]. They are typed once and used for both.
 
 ## Checking that we're live
 

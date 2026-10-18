@@ -2,23 +2,24 @@
 
 <table class="infobox">
 <caption>Connected accounts</caption>
-<tr><th>Where</th><td>[[Streamlabs]] Settings, Stream</td></tr>
-<tr><th>Connected</th><td>[[YouTube]] channel and [[Facebook]] page</td></tr>
+<tr><th>YouTube</th><td>GT Church channel</td></tr>
+<tr><th>Facebook</th><td>An account that manages the page GT Church | Church</td></tr>
+<tr><th>Where</th><td>[[Streamlabs]]</td></tr>
 <tr><th>Checked</th><td>Every Thursday</td></tr>
 </table>
 
-Our church [[YouTube]] channel and [[Facebook]] page are connected straight to [[Streamlabs]]. Someone signs in to each account once, and from then on Streamlabs can stream to both. We don't copy or paste stream keys.
+Our [[YouTube]] channel and [[Facebook]] page are connected straight to [[Streamlabs]]. Someone signs in to each account once, and from then on Streamlabs can stream to both. We don't copy or paste stream keys.
 
 ## Checking the connections (Thursday)
 
 1. Open Streamlabs. [[open:streamlabs]]
-2. Click **Go Live** at the bottom right.
-3. Make sure **YouTube** and **Facebook** are both listed and switched on.
+2. Look at the bottom left of the window. It should say **Logged In** with the YouTube and Facebook icons.
+3. Click **Go Live** at the bottom right. Under **Destinations**, both **YouTube** (GT Church) and **Facebook** should be listed and switched on.
 4. Close the window without going live.
 
-If one of them is missing or asks you to sign in, it has been disconnected. Reconnect it under **Settings** (the gear at the bottom of the side menu), then **Stream**. If you don't have the password, tell the media director. Don't try to guess it.
+If one of them is missing or asks you to sign in, it has been disconnected. Reconnect it in **Settings** (bottom of the side menu), then **Stream**. If you don't have the password, tell the media director. Don't try to guess it.
 
-> **To fill in:** which account Streamlabs is signed in with, and who to ask when a connection needs to be redone. Never write passwords here.
+> **To fill in:** who to ask when a connection needs to be redone. Never write passwords here.
 
 ## Why a connection can break
 

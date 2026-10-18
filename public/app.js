@@ -4,7 +4,7 @@
 //   [[going-live|Going live]]     link with custom text
 //   [[open:propresenter]]         button that opens ProPresenter on the MacBook
 //   [[checklist:sunday]]          link to a checklist
-//   [[map:propresenter]]          clickable map of an app window (public/visuals.js)
+//   [[map:propresenter]]          screenshot with numbered, clickable parts (public/visuals.js)
 //   [[timeline:sunday]]           picture of when we go live
 
 const state = { pages: [], apps: {}, checklists: [], nav: [] };
@@ -47,7 +47,7 @@ function wikifyText(markdown) {
       const id = target.slice(5);
       return openButton(id, text);
     }
-    if (target.startsWith('map:')) return Visuals.screenMap(target.slice(4));
+    if (target.startsWith('map:')) return wikifyText(Visuals.screenMap(target.slice(4)));
     if (target.startsWith('timeline:')) return Visuals.timeline(target.slice(9));
     if (target.startsWith('checklist:')) {
       const id = target.slice(10);
@@ -76,6 +76,7 @@ function openButton(id, text, small = false) {
 function fixAssetPaths(root) {
   if (!window.STATIC_SITE) return;
   root.querySelectorAll('[src^="/"]').forEach((el) => el.setAttribute('src', Visuals.assetUrl(el.getAttribute('src'))));
+  root.querySelectorAll('a[href^="/docs/"]').forEach((el) => el.setAttribute('href', Visuals.assetUrl(el.getAttribute('href'))));
 }
 
 async function showPage(slug) {
@@ -91,6 +92,7 @@ async function showPage(slug) {
   const source = `<p class="page-source">To change this page, edit <code>docs/${escapeHtml(page.slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p>`;
   $('#content').innerHTML = pageFrame(`#/${page.slug}`, page.title, body, source);
   fixAssetPaths($('#content'));
+  placeInfobox();
   buildToc();
   document.title = slug === 'home' ? page.title : `${page.title} - Glad Tidings Media Team`;
 }
@@ -123,8 +125,20 @@ function pageFrame(href, title, body, footer = '') {
       ${prev ? `<a class="pager-prev" href="${prev.href}"><small>Previous</small>${escapeHtml(prev.text)}</a>` : '<span></span>'}
       ${next ? `<a class="pager-next" href="${next.href}"><small>Next</small>${escapeHtml(next.text)}</a>` : '<span></span>'}
     </nav>` : '';
-  return `<div class="page"><article class="article">${crumbs}${body}${pager}${footer}</article><aside class="toc" aria-label="On this page"></aside></div>`;
+  return `<div class="page"><article class="article">${crumbs}${body}${pager}${footer}</article><aside class="side"><div class="side-infobox"></div><div class="toc" aria-label="On this page"></div></aside></div>`;
 }
+
+// On wide screens the infobox moves into the right column, above "On this page", so screenshots
+// get the full width of the article. On narrow screens it goes back under the title.
+const wideScreen = window.matchMedia('(min-width: 1200px)');
+function placeInfobox() {
+  const box = document.querySelector('.infobox');
+  const slot = document.querySelector('.side-infobox');
+  if (!box || !slot) return;
+  if (wideScreen.matches) slot.append(box);
+  else document.querySelector('.article h1')?.after(box);
+}
+wideScreen.addEventListener('change', placeInfobox);
 
 function buildToc() {
   const heads = [...document.querySelectorAll('.article h2')];
