@@ -15,7 +15,8 @@ Our [[YouTube]] channel and [[Facebook]] page are connected straight to [[Stream
 1. Open Streamlabs. [[open:streamlabs]]
 2. Look at the bottom left of the window. It should say **Logged In** with the YouTube and Facebook icons.
 3. Click **Go Live** at the bottom right. Under **Destinations**, both **YouTube** (GT Church) and **Facebook** should be listed and switched on.
-4. Close the window without going live.
+4. Check that **Facebook Destination** says `Share to a Page You Manage` and **Facebook Page** says `GT Church | Church`.
+5. Close the window without going live.
 
 If one of them is missing or asks you to sign in, it has been disconnected. Reconnect it in **Settings** (bottom of the side menu), then **Stream**. If you don't have the password, tell the media director. Don't try to guess it.
 

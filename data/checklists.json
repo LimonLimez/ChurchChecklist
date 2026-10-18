@@ -4,7 +4,7 @@
     {
       "id": "thursday",
       "title": "Thursday Prep",
-      "summary": "Get everything for Sunday into ProPresenter and set up the live streams, so Sunday is just pressing buttons.",
+      "summary": "Get everything for Sunday into ProPresenter and check the stream connections, so Sunday is just pressing buttons.",
       "phases": [
         {
           "id": "gather",
@@ -112,31 +112,15 @@
         },
         {
           "id": "stream-setup",
-          "title": "3. Set up the live stream",
+          "title": "3. Check the stream connections",
           "items": [
             {
               "id": "check-connections",
               "title": "Check that YouTube and Facebook are still connected in Streamlabs",
-              "details": "Open Streamlabs. The bottom left should say Logged In with the YouTube and Facebook icons. Click Go Live and make sure YouTube (GT Church) and Facebook are both listed and switched on. Close the window without going live.",
+              "details": "Open Streamlabs. The bottom left should say Logged In with the YouTube and Facebook icons. Click Go Live and make sure YouTube (GT Church) and Facebook are both listed and switched on, Facebook Destination is Share to a Page You Manage, and Facebook Page is GT Church | Church. Close the window without going live.",
               "wiki": "connected-accounts",
               "app": "streamlabs",
               "automation": "assist"
-            },
-            {
-              "id": "youtube-details",
-              "title": "Set the stream title and description in Streamlabs",
-              "details": "In the Go Live window, the title is Sunday's date, a dash, and GT CHURCH (example: October 25, 2026 - GT CHURCH). The description is the CCLI Streaming Plus License line.",
-              "wiki": "youtube",
-              "app": "streamlabs",
-              "automation": "auto"
-            },
-            {
-              "id": "facebook-details",
-              "title": "Point Facebook at the GT Church page",
-              "details": "In the Go Live window, Facebook Destination is Share to a Page You Manage and Facebook Page is GT Church | Church. The title and description are the same as YouTube.",
-              "wiki": "facebook",
-              "app": "streamlabs",
-              "automation": "auto"
             }
           ]
         }
@@ -185,7 +169,7 @@
             {
               "id": "open-streamlabs",
               "title": "Open Streamlabs and check the scenes",
-              "details": "Click through each scene (Main OUTPUT, Audience View, Camera SETUP) and make sure the camera shows up.",
+              "details": "Click through each scene (Main OUTPUT, Audience View, Camera SETUP) and make sure the camera shows up. Leave it on Main OUTPUT, the scene we go live on.",
               "wiki": "streamlabs",
               "app": "streamlabs",
               "automation": "auto"
@@ -197,14 +181,6 @@
               "wiki": "streamlabs",
               "app": "streamlabs",
               "automation": "assist"
-            },
-            {
-              "id": "check-stream-info",
-              "title": "Double-check the stream titles and descriptions",
-              "details": "Click Go Live and make sure the title has today's date (Month D, YYYY - GT CHURCH), not last week's. Check that Facebook goes to the GT Church page. Then close the window.",
-              "wiki": "streamlabs",
-              "app": "streamlabs",
-              "automation": "auto"
             },
             {
               "id": "check-internet",
@@ -244,7 +220,7 @@
             {
               "id": "go-live",
               "title": "Click Go Live in Streamlabs when worship ends",
-              "details": "Wait for worship to fully end. Click Go Live, check that YouTube and Facebook are both switched on, then click Confirm & Go Live.",
+              "details": "Wait for worship to fully end, with Main OUTPUT selected. Click Go Live. Type the title (today's date, a dash, GT CHURCH, like October 18, 2026 - GT CHURCH) and the description (the CCLI Streaming Plus License line). Check YouTube and Facebook are both on, Facebook goes to GT Church | Church, and Record Stream is switched on. Then click Confirm & Go Live.",
               "wiki": "going-live",
               "app": "streamlabs",
               "automation": "manual"
@@ -259,7 +235,7 @@
             {
               "id": "run-sermon",
               "title": "Run the sermon slides and scripture",
-              "details": "Follow the pastor and run the slides and scripture in ProPresenter. Watch the Streamlabs preview to make sure viewers see what you expect.",
+              "details": "Follow the pastor and run the slides and scripture in ProPresenter. To show live viewers what is on the main screens, switch Streamlabs to Audience View, then back to Main OUTPUT for the camera.",
               "wiki": "going-live",
               "app": "propresenter",
               "automation": "manual"
@@ -289,7 +265,7 @@
             {
               "id": "confirm-saved",
               "title": "Confirm the video saved on YouTube and Facebook",
-              "details": "Check that the recording shows up on the church channel and page.",
+              "details": "Check that the video shows up on the church YouTube channel and Facebook page. The recording on the MacBook is under Recordings in the Streamlabs side menu.",
               "wiki": "going-live",
               "automation": "auto"
             },

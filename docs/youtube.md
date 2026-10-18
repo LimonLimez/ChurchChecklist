@@ -19,7 +19,7 @@ The date, a dash, then GT CHURCH:
 October 18, 2026 - GT CHURCH
 ```
 
-Change the date to that Sunday's date. You type it in the Go Live window in [[Streamlabs]].
+Change the date to that Sunday's date. You type it on Sunday in the Go Live window in [[Streamlabs]].
 
 ## Description
 

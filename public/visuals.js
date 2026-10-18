@@ -31,8 +31,8 @@ const SCREEN_MAPS = {
       { label: 'Logged In', box: [10, 1122, 245, 48], text: 'The YouTube and Facebook icons here mean both accounts are connected. See [[connected-accounts|Connected accounts]].' },
       { label: 'Preview', box: [290, 55, 1665, 670], text: 'What viewers see once we are live. Here it shows the sanctuary camera.' },
       { label: 'Mini Feed', box: [285, 740, 1675, 175], text: 'New likes and comments from our YouTube and Facebook. You do not need it to run the stream.' },
-      { label: 'Scenes', box: [297, 930, 538, 175], text: 'Our scenes are Main OUTPUT, Audience View, and Camera SETUP. Click one to switch to it. The list scrolls, so more may be below.' },
-      { label: 'Sources', box: [855, 930, 538, 175], text: 'What is inside the selected scene. Main OUTPUT has the camera (Video Capture Device) and the ProPresenter lower third. Do not change these on a Sunday.' },
+      { label: 'Scenes', box: [297, 930, 538, 175], text: 'Our scenes are Main OUTPUT (the one we are live on), Audience View, and Camera SETUP. Click one to switch to it. A scene called test sits below them. Ignore it.' },
+      { label: 'Sources', box: [855, 930, 538, 175], text: 'What is inside the selected scene. Main OUTPUT has the camera (Video Capture Device) and the ProPresenter lower third, which shows lyrics. Do not change these on a Sunday.' },
       { label: 'Mixer', box: [1410, 930, 540, 175], text: 'The sound level of our audio interface (Scarlett 8i6 USB). The bar should move with the sound and stay out of the red.' },
       { label: 'Status bar', box: [290, 1132, 520, 46], text: 'CPU use, frames per second, dropped frames, and upload speed. Upload reads 0 kb/s until we are live. Dropped frames that keep rising mean the internet is struggling.' },
       { label: 'Go Live', box: [1785, 1135, 165, 42], text: 'Opens the Go Live window. Only click it after worship ends.' },
@@ -45,11 +45,11 @@ const SCREEN_MAPS = {
     caption: 'The Go Live window in Streamlabs. Click a number to learn what each part is for.',
     regions: [
       { label: 'Destinations', box: [44, 108, 342, 158], text: 'Turn on both YouTube (GT Church) and Facebook. The name under each is the account that is connected.' },
-      { label: 'Title', box: [410, 104, 611, 101], text: 'The title is the date, then a dash, then GT CHURCH. For example: October 18, 2026 - GT CHURCH.' },
+      { label: 'Title', box: [410, 104, 611, 101], text: 'We type the title on Sunday: the date, then a dash, then GT CHURCH. For example: October 18, 2026 - GT CHURCH.' },
       { label: 'Description', box: [410, 252, 611, 110], text: 'The CCLI Streaming Plus License line, the same on every stream.' },
       { label: 'Facebook page', box: [410, 362, 611, 220], text: 'Facebook Destination is "Share to a Page You Manage" and Facebook Page is "GT Church | Church".' },
       { label: 'Chat and output', box: [44, 745, 342, 125], text: 'In our screenshot Primary Chat is Facebook, and Dual Output and Stream Shift are unchecked. Leave them as they are.' },
-      { label: 'Record Stream', box: [44, 905, 250, 48], text: 'Records a copy of the stream on the MacBook.' },
+      { label: 'Record Stream', box: [44, 905, 250, 48], text: 'Keep this switched on. It records a copy of every service on the MacBook.' },
       { label: 'Confirm & Go Live', box: [840, 906, 180, 46], text: 'Starts the stream on YouTube and Facebook at the same time. Only after worship ends.' },
     ],
   },
@@ -105,7 +105,7 @@ document.addEventListener('click', (e) => {
 function timeline(id) {
   if (id !== 'sunday') return `<p><em>No timeline called "${id}".</em></p>`;
   const stages = [
-    { name: 'Before service', what: 'Set up, check screens, sound, and stream info', live: false },
+    { name: 'Before service', what: 'Set up, check screens, sound, and camera', live: false },
     { name: 'Worship', what: 'Run lyrics in ProPresenter', live: false },
     { name: 'Sermon', what: 'Run slides and scripture', live: true },
     { name: 'Closing', what: 'Click End Stream', live: true },
