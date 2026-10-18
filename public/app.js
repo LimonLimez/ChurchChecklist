@@ -3,7 +3,9 @@
 //   [[ProPresenter]]              link to the page "propresenter"
 //   [[stream-keys|Stream keys]]   link with custom text
 //   [[open:propresenter]]         button that opens ProPresenter on the MacBook
-//   [[checklist:sunday]]          button that opens a checklist
+//   [[checklist:sunday]]          link to a checklist
+//   [[map:propresenter]]          clickable map of an app window (public/visuals.js)
+//   [[timeline:sunday]]           picture of when we go live
 
 const state = { pages: [], apps: {}, checklists: [] };
 const $ = (sel) => document.querySelector(sel);
@@ -43,9 +45,10 @@ function wikifyText(markdown) {
 
     if (target.startsWith('open:')) {
       const id = target.slice(5);
-      const label = text || `Open ${state.apps[id] || id}`;
-      return `<button class="btn" data-open="${escapeHtml(id)}">${escapeHtml(label)}</button>`;
+      return openButton(id, text);
     }
+    if (target.startsWith('map:')) return Visuals.screenMap(target.slice(4));
+    if (target.startsWith('timeline:')) return Visuals.timeline(target.slice(9));
     if (target.startsWith('checklist:')) {
       const id = target.slice(10);
       const list = state.checklists.find((c) => c.id === id);
@@ -61,6 +64,11 @@ function wikifyText(markdown) {
 }
 
 const render = (markdown) => marked.parse(wikify(markdown));
+
+function openButton(id, text, small = false) {
+  const label = text || `Open ${state.apps[id] || id}`;
+  return `<button class="btn${small ? ' small' : ''}" data-open="${escapeHtml(id)}">${Visuals.logoImg(id)}${escapeHtml(label)}</button>`;
+}
 
 // ---------- Pages ----------
 
@@ -124,7 +132,7 @@ async function showChecklist(id, date) {
           <div class="item-title">${escapeHtml(item.title)}</div>
           <div class="item-details">${escapeHtml(item.details || '')}</div>
           <div class="item-actions">
-            ${item.app ? `<button class="btn small" data-open="${item.app}">Open ${escapeHtml(state.apps[item.app] || item.app)}</button>` : ''}
+            ${item.app ? openButton(item.app, '', true) : ''}
             ${item.wiki ? wikify(`[[${item.wiki}|How do I do this?]]`) : ''}
             ${{ assist: '<span class="automation">AI could help</span>', auto: '<span class="automation">Could be automated</span>' }[item.automation] || ''}
             <input class="note" placeholder="Notes / problems…" value="${escapeHtml(saved.note || '')}">
@@ -144,7 +152,8 @@ async function showChecklist(id, date) {
         <div id="progress-text"></div>
         <div class="progress"><div id="progress-fill"></div></div>
       </div>
-      <button class="btn secondary small" onclick="window.print()">Print</button>
+      <button class="btn primary" id="guide-start">Guide me</button>
+      <button class="btn small" id="print" onclick="window.print()">Print</button>
     </div>
     ${list.phases.map((phase) => `
       <section class="phase">
@@ -196,6 +205,150 @@ async function showChecklist(id, date) {
     el.querySelector('.item-title').onclick = () => { box.checked = !box.checked; save(el); };
     el.querySelector('.note').onchange = () => save(el);
   });
+
+  $('#guide-start').onclick = () => startGuide(list, allItems, () => run, save);
+}
+
+// ---------- Guide me: one checklist item at a time ----------
+
+function startGuide(list, allItems, getRun, save) {
+  const phaseOf = (item) => list.phases.find((p) => p.items.includes(item));
+  const skipped = new Set();
+  let index = Math.max(0, allItems.findIndex((i) => !getRun().items[i.id]?.done));
+  if (allItems.every((i) => getRun().items[i.id]?.done)) index = allItems.length;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'guide';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', `${list.title} guide`);
+  document.body.append(overlay);
+  document.body.classList.add('guide-open');
+
+  const close = () => {
+    overlay.remove();
+    document.body.classList.remove('guide-open');
+    document.removeEventListener('keydown', onKey);
+  };
+  const el = (item) => document.querySelector(`.item[data-item="${item.id}"]`);
+
+  const finish = () => {
+    const missed = allItems.filter((i) => !getRun().items[i.id]?.done);
+    overlay.innerHTML = `
+      <div class="guide-panel">
+        <div class="guide-top"><span>${escapeHtml(list.title)}</span><button class="btn small" data-guide="close">Close</button></div>
+        <h2 class="guide-title">${missed.length ? `${missed.length} item${missed.length === 1 ? '' : 's'} still open` : 'Everything is done'}</h2>
+        ${missed.length
+          ? `<p>These were skipped or not finished yet:</p><ul>${missed.map((i) => `<li>${escapeHtml(i.title)}</li>`).join('')}</ul>`
+          : `<p>All ${allItems.length} items are checked off. Thank you for serving.</p>`}
+        <div class="guide-nav">
+          ${missed.length ? '<button class="btn" data-guide="restart">Go through open items</button>' : ''}
+          <button class="btn primary" data-guide="close">Back to checklist</button>
+        </div>
+      </div>`;
+  };
+
+  const show = () => {
+    if (index >= allItems.length) return finish();
+    const item = allItems[index];
+    const saved = getRun().items[item.id] || {};
+    const done = allItems.filter((i) => getRun().items[i.id]?.done).length;
+    overlay.innerHTML = `
+      <div class="guide-panel">
+        <div class="guide-top">
+          <span>${escapeHtml(list.title)}: step ${index + 1} of ${allItems.length}</span>
+          <button class="btn small" data-guide="close">Close</button>
+        </div>
+        <div class="progress"><div style="width:${(done / allItems.length) * 100}%"></div></div>
+        <p class="guide-phase">${escapeHtml(phaseOf(item).title)}</p>
+        <h2 class="guide-title">${escapeHtml(item.title)}</h2>
+        <p class="guide-details">${escapeHtml(item.details || '')}</p>
+        <div class="guide-actions">
+          ${item.app ? openButton(item.app) : ''}
+          ${item.wiki ? wikify(`[[${item.wiki}|Read how to do this]]`) : ''}
+        </div>
+        <label class="guide-note">Notes or problems (optional)
+          <input id="guide-note" value="${escapeHtml(saved.note || '')}">
+        </label>
+        ${saved.done ? '<p class="item-meta">Already checked off.</p>' : ''}
+        <div class="guide-nav">
+          <button class="btn" data-guide="back" ${index === 0 ? 'disabled' : ''}>Back</button>
+          <button class="btn" data-guide="skip">Skip for now</button>
+          <button class="btn primary" data-guide="done">Done, next step</button>
+        </div>
+      </div>`;
+    overlay.querySelector('[data-guide="done"]').focus();
+  };
+
+  const record = async (done) => {
+    const item = allItems[index];
+    const row = el(item);
+    row.querySelector('.note').value = $('#guide-note').value;
+    row.querySelector('input[type=checkbox]').checked = done;
+    await save(row);
+  };
+
+  overlay.addEventListener('click', async (e) => {
+    if (e.target.closest('a.wikilink')) return close();
+    const action = e.target.closest('[data-guide]')?.dataset.guide;
+    if (!action) return;
+    if (action === 'close') return close();
+    if (action === 'back') index = Math.max(0, index - 1);
+    if (action === 'skip') { skipped.add(allItems[index].id); index += 1; }
+    if (action === 'done') { await record(true); index += 1; }
+    if (action === 'restart') index = allItems.findIndex((i) => !getRun().items[i.id]?.done);
+    show();
+  });
+
+  function onKey(e) {
+    if (e.key === 'Escape') close();
+  }
+  document.addEventListener('keydown', onKey);
+  show();
+}
+
+// ---------- Link previews (like Wikipedia's page previews) ----------
+
+function pageSummary(page) {
+  const para = page.text.split(/\n\s*\n/).map((b) => b.trim())
+    .find((b) => b && !/^(#|<|>|\||\[\[|-|\d+\.|```)/.test(b));
+  return (para || '')
+    .replace(/\[\[([^\]|]+)\|?([^\]]*)\]\]/g, (_, a, b) => b || a)
+    .replace(/[*_`]/g, '');
+}
+
+function setupPreviews() {
+  const card = document.createElement('div');
+  card.className = 'link-preview';
+  card.hidden = true;
+  document.body.append(card);
+  let timer;
+
+  document.addEventListener('mouseover', (e) => {
+    const link = e.target.closest('.content a.wikilink:not(.missing)');
+    if (!link || link.contains(e.relatedTarget)) return;
+    const page = state.pages.find((p) => `#/${p.slug}` === link.getAttribute('href'));
+    if (!page || `#/${page.slug}` === location.hash) return;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      card.innerHTML = `
+        <div class="link-preview-head">${Visuals.logoImg(page.slug, 40)}<strong>${escapeHtml(page.title)}</strong></div>
+        <p>${escapeHtml(pageSummary(page))}</p>`;
+      card.hidden = false;
+      const r = link.getBoundingClientRect();
+      const left = Math.min(r.left, window.innerWidth - card.offsetWidth - 16);
+      const below = r.bottom + 8 + card.offsetHeight < window.innerHeight;
+      card.style.left = `${Math.max(16, left)}px`;
+      card.style.top = `${below ? r.bottom + 8 : r.top - card.offsetHeight - 8}px`;
+    }, 350);
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('.content a.wikilink') && !e.target.closest('a').contains(e.relatedTarget)) {
+      clearTimeout(timer);
+      card.hidden = true;
+    }
+  });
+  window.addEventListener('hashchange', () => { clearTimeout(timer); card.hidden = true; });
 }
 
 // ---------- Open apps ----------
@@ -268,11 +421,16 @@ async function init() {
     state.apps = Object.fromEntries(apps.apps.map((a) => [a.id, a.label]));
     state.checklists = checklists.checklists;
     $('#sidebar').innerHTML = render(sidebar);
+    $('#sidebar').querySelectorAll('a').forEach((a) => {
+      const slug = a.getAttribute('href').replace('#/', '');
+      if (Visuals.LOGOS[slug]) a.insertAdjacentHTML('afterbegin', Visuals.logoImg(slug));
+    });
   } catch (err) {
     $('#content').innerHTML = `<h1>Can't reach the wiki server</h1><p>Make sure the server window is open (double-click <code>Start Wiki.command</code>). Error: ${escapeHtml(err.message)}</p>`;
     return;
   }
   setupSearch();
+  setupPreviews();
   $('#menu-toggle').onclick = () => {
     const open = $('#sidebar').classList.toggle('open');
     $('#menu-toggle').setAttribute('aria-expanded', String(open));

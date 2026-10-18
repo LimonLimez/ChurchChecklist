@@ -31,3 +31,7 @@ See `docs/how-to-edit.md` (or "How to edit this wiki" in the sidebar) for writin
 ## Safety
 
 The server only listens on the MacBook itself (`127.0.0.1`), so nobody else on the network can reach it. It only opens apps listed in `config/apps.json`. Never put passwords or stream keys in the wiki.
+
+## Logos
+
+The ProPresenter, Streamlabs, YouTube, Facebook, and Chrome logos in `public/images/logos/` belong to their companies. They are used only to show which app a page or button is about. Sources: Renewed Vision's and Streamlabs' websites, and Wikimedia Commons.

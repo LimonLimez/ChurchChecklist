@@ -2,6 +2,8 @@
 
 **We go live after worship ends**, not at the start of service.
 
+[[timeline:sunday]]
+
 ## Step by step
 
 1. **Before service:** open [[Streamlabs]] and switch to the **Before stream** scene. [[open:streamlabs]]

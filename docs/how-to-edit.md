@@ -61,3 +61,17 @@ Make a new file in `docs/`, for example `docs/sound-board.md`, and start it with
 ```
 
 Then add it to the sidebar in `docs/_sidebar.md`.
+
+## Adding a screen map or the Sunday timeline
+
+```
+[[map:propresenter]]
+[[map:streamlabs]]
+[[timeline:sunday]]
+```
+
+The maps and the timeline are defined in `public/visuals.js`. To change a label or a description, edit the text there.
+
+## Logos
+
+App logos are in `public/images/logos/`. They all use the same square size so they line up. To show one in an info box, copy the logo row from the top of `docs/propresenter.md`.
