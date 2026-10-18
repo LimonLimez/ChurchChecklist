@@ -6,4 +6,4 @@ Part of [[checklist:thursday|Thursday Prep]].
 2. Add them to [[ProPresenter]] and put them in Sunday's playlist.
 3. Make sure the countdown timer is set up for before service.
 
-> ✏️ **To fill in:** who sends announcements, and by what day.
+> **To fill in:** who sends announcements, and by what day.

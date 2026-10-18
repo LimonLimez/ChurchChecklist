@@ -2,7 +2,7 @@
 
 We stream every Sunday service to the church Facebook page at the same time as [[YouTube]], using [[Streamlabs]].
 
-> ✏️ **To fill in:** the link to our Facebook page, and who is an admin.
+> **To fill in:** the link to our Facebook page, and who is an admin.
 
 ## Title and description
 

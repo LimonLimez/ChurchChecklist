@@ -16,4 +16,4 @@ Double-click **Start Wiki** on the desktop. A window opens (leave it open), then
 
 Clear the screens in [[ProPresenter]], close [[Streamlabs]], and turn off the projectors/TVs.
 
-> ✏️ **To fill in:** the MacBook login (in person only, never written here), and where the cables and adapters are kept.
+> **To fill in:** the MacBook login (in person only, never written here), and where the cables and adapters are kept.

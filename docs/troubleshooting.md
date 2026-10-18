@@ -11,4 +11,4 @@
 | Stream is choppy | Check the internet connection. Look for "dropped frames" at the bottom of Streamlabs. |
 | Open button doesn't work | The wiki server must be running on the MacBook. See [[macbook|The media MacBook]]. |
 
-> ✏️ **To fill in:** who to call when something breaks (name and number on the printed sheet by the booth).
+> **To fill in:** who to call when something breaks (name and number on the printed sheet by the booth).

@@ -44,12 +44,12 @@ function wikifyText(markdown) {
     if (target.startsWith('open:')) {
       const id = target.slice(5);
       const label = text || `Open ${state.apps[id] || id}`;
-      return `<button class="btn" data-open="${escapeHtml(id)}">▶ ${escapeHtml(label)}</button>`;
+      return `<button class="btn" data-open="${escapeHtml(id)}">${escapeHtml(label)}</button>`;
     }
     if (target.startsWith('checklist:')) {
       const id = target.slice(10);
       const list = state.checklists.find((c) => c.id === id);
-      return `<a class="btn" href="#/checklist/${escapeHtml(id)}">☑ ${escapeHtml(text || (list ? list.title : id))} checklist</a>`;
+      return `<a href="#/checklist/${escapeHtml(id)}">${escapeHtml(text || (list ? list.title : id))} checklist</a>`;
     }
 
     const slug = slugify(target);
@@ -73,8 +73,9 @@ async function showPage(slug) {
       <p>To create it, add a file called <code>docs/${escapeHtml(slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p></blockquote>`;
     return;
   }
-  $('#content').innerHTML = render(page.text);
-  document.title = `${page.title} · Media Team Wiki`;
+  $('#content').innerHTML = render(page.text) +
+    `<p class="page-source">To change this page, edit <code>docs/${escapeHtml(page.slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p>`;
+  document.title = `${page.title} - Glad Tidings Media Team`;
 }
 
 // ---------- Checklists ----------
@@ -102,7 +103,7 @@ async function showChecklist(id, date) {
   const list = state.checklists.find((c) => c.id === id);
   if (!list) return showPage(`checklist-${id}`);
   date = date || defaultDate(id);
-  document.title = `${list.title} · Media Team Wiki`;
+  document.title = `${list.title} - Glad Tidings Media Team`;
 
   let run;
   try {
@@ -117,30 +118,30 @@ async function showChecklist(id, date) {
     const saved = run.items[item.id] || {};
     const meta = saved.done && saved.by ? `Done by ${escapeHtml(saved.by)} at ${new Date(saved.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : '';
     return `
-      <div class="item ${saved.done ? 'done' : ''}" data-item="${item.id}">
+      <li class="item ${saved.done ? 'done' : ''}" data-item="${item.id}">
         <input type="checkbox" ${saved.done ? 'checked' : ''} aria-label="${escapeHtml(item.title)}">
         <div>
           <div class="item-title">${escapeHtml(item.title)}</div>
           <div class="item-details">${escapeHtml(item.details || '')}</div>
           <div class="item-actions">
-            ${item.app ? `<button class="btn small" data-open="${item.app}">▶ Open ${escapeHtml(state.apps[item.app] || item.app)}</button>` : ''}
+            ${item.app ? `<button class="btn small" data-open="${item.app}">Open ${escapeHtml(state.apps[item.app] || item.app)}</button>` : ''}
             ${item.wiki ? wikify(`[[${item.wiki}|How do I do this?]]`) : ''}
-            <span class="tag ${item.automation}" title="Could this be automated later?">${{ manual: 'person', assist: 'AI could help', auto: 'could automate' }[item.automation] || ''}</span>
+            ${{ assist: '<span class="automation">AI could help</span>', auto: '<span class="automation">Could be automated</span>' }[item.automation] || ''}
             <input class="note" placeholder="Notes / problems…" value="${escapeHtml(saved.note || '')}">
           </div>
           <div class="item-meta">${meta}</div>
         </div>
-      </div>`;
+      </li>`;
   };
 
   $('#content').innerHTML = `
-    <h1>☑ ${escapeHtml(list.title)} Checklist</h1>
+    <h1>${escapeHtml(list.title)} checklist</h1>
     <p>${escapeHtml(list.summary)}</p>
     <div class="checklist-bar">
       <label>Date<input type="date" id="run-date" value="${date}"></label>
       <label>Your name<input id="run-name" value="${escapeHtml(getName())}" placeholder="Who's doing this?"></label>
-      <div style="flex:1;min-width:200px">
-        <div id="progress-text" class="item-meta"></div>
+      <div class="checklist-progress">
+        <div id="progress-text"></div>
         <div class="progress"><div id="progress-fill"></div></div>
       </div>
       <button class="btn secondary small" onclick="window.print()">Print</button>
@@ -148,7 +149,7 @@ async function showChecklist(id, date) {
     ${list.phases.map((phase) => `
       <section class="phase">
         <h2>${escapeHtml(phase.title)}</h2>
-        ${phase.items.map(itemHtml).join('')}
+        <ul class="items">${phase.items.map(itemHtml).join('')}</ul>
       </section>`).join('')}
     <div id="missed"></div>`;
 
@@ -158,7 +159,7 @@ async function showChecklist(id, date) {
     $('#progress-fill').style.width = `${(done / allItems.length) * 100}%`;
     const left = allItems.filter((i) => !run.items[i.id]?.done);
     $('#missed').innerHTML = left.length === 0
-      ? '<blockquote><p><strong>🎉 All done!</strong> Great work.</p></blockquote>'
+      ? `<p class="all-done">All ${allItems.length} items done.</p>`
       : '';
   };
   updateProgress();
@@ -250,6 +251,8 @@ async function route() {
   else await showPage(parts[0]);
 
   document.querySelectorAll('#sidebar a').forEach((a) => a.classList.toggle('active', a.getAttribute('href') === location.hash));
+  $('#sidebar').classList.remove('open');
+  $('#menu-toggle').setAttribute('aria-expanded', 'false');
   window.scrollTo(0, 0);
 }
 
@@ -270,6 +273,10 @@ async function init() {
     return;
   }
   setupSearch();
+  $('#menu-toggle').onclick = () => {
+    const open = $('#sidebar').classList.toggle('open');
+    $('#menu-toggle').setAttribute('aria-expanded', String(open));
+  };
   window.addEventListener('hashchange', route);
   route();
 }

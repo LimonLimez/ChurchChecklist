@@ -12,6 +12,6 @@
 6. **Click End Stream.**
 7. **Check the video saved** on YouTube and Facebook.
 
-> 🎥 **Video to add:** a screen recording of going live and ending a stream.
+> **Video needed:** a screen recording of going live and ending a stream.
 
 Use the [[checklist:sunday]] so nothing gets missed.

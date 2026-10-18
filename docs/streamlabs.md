@@ -1,11 +1,12 @@
 # Streamlabs
 
-<div class="infobox">
-<strong>Streamlabs Desktop</strong>
-<b>Used for:</b> live streaming the service<br>
-<b>Streams to:</b> [[YouTube]] and [[Facebook]]<br>
-<b>When:</b> Sunday, <b>after worship ends</b>
-</div>
+<table class="infobox">
+<caption>Streamlabs Desktop</caption>
+<tr><th>Made by</th><td>Streamlabs</td></tr>
+<tr><th>Used for</th><td>Live streaming the service</td></tr>
+<tr><th>Streams to</th><td>[[YouTube]] and [[Facebook]]</td></tr>
+<tr><th>Goes live</th><td>Sunday, after worship ends</td></tr>
+</table>
 
 **Streamlabs** (Streamlabs Desktop) is the program that sends our service to the internet. It mixes the camera, the [[ProPresenter]] slides, and the sound into one video and sends it to [[YouTube]] and [[Facebook]] at the same time.
 
@@ -13,7 +14,7 @@
 
 ## The main parts of the screen
 
-> 📸 **Screenshot to add:** the Streamlabs window with arrows pointing at Scenes, Sources, the Audio Mixer, and the Go Live button. Save it as `docs/images/streamlabs-main.png`.
+> **Screenshot needed:** the Streamlabs window with arrows pointing at Scenes, Sources, the Audio Mixer, and the Go Live button. Save it as `docs/images/streamlabs-main.png`.
 
 | Part | What it does |
 |------|--------------|
@@ -24,7 +25,7 @@
 
 ## Our scenes
 
-> ✏️ **To fill in:** list our real scene names and when to use each one.
+> **To fill in:** list our real scene names and when to use each one.
 
 | Scene | When to use it |
 |-------|----------------|
@@ -42,6 +43,6 @@ Before going live, every stream needs a **title** and a **description** for both
 3. Type the title and description for each one. Use the format on the [[YouTube]] page.
 4. On Thursday, stop here and close the window. On Sunday, click **Confirm & Go Live** when worship ends.
 
-> 📸 **Screenshot to add:** the Go Live window with arrows on the YouTube toggle, the Facebook toggle, and the title boxes.
+> **Screenshot needed:** the Go Live window with arrows on the YouTube toggle, the Facebook toggle, and the title boxes.
 
 See also: [[going-live|Going live]], [[stream-keys|Stream keys]].

@@ -2,7 +2,7 @@
 
 We stream every Sunday service to the church YouTube channel using [[Streamlabs]].
 
-> ✏️ **To fill in:** the link to our channel, and who has access to manage it.
+> **To fill in:** the link to our channel, and who has access to manage it.
 
 ## Title format
 

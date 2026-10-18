@@ -1,11 +1,12 @@
 # ProPresenter
 
-<div class="infobox">
-<strong>ProPresenter</strong>
-<b>Made by:</b> Renewed Vision<br>
-<b>Used for:</b> lyrics, scripture, sermon slides, announcements, countdowns<br>
-<b>Used on:</b> <a href="#/checklist/thursday">Thursday Prep</a>, <a href="#/checklist/sunday">Sunday Service</a>
-</div>
+<table class="infobox">
+<caption>ProPresenter</caption>
+<tr><th>Made by</th><td>Renewed Vision</td></tr>
+<tr><th>Used for</th><td>Lyrics, scripture, sermon slides, announcements, countdowns</td></tr>
+<tr><th>Runs on</th><td>The media MacBook</td></tr>
+<tr><th>Checklists</th><td><a href="#/checklist/thursday">Thursday Prep</a>, <a href="#/checklist/sunday">Sunday Service</a></td></tr>
+</table>
 
 **ProPresenter** is the program that puts words and pictures on the screens in the sanctuary. It also sends slides to the live stream through [[Streamlabs]].
 
@@ -13,7 +14,7 @@
 
 ## The main parts of the screen
 
-> 📸 **Screenshot to add:** the main ProPresenter window with arrows pointing at the Library, the Playlist, the slide area, and the Clear buttons. Save it as `docs/images/propresenter-main.png`.
+> **Screenshot needed:** the main ProPresenter window with arrows pointing at the Library, the Playlist, the slide area, and the Clear buttons. Save it as `docs/images/propresenter-main.png`.
 
 | Part | What it does |
 |------|--------------|
@@ -37,6 +38,6 @@
 
 ## Video walkthrough
 
-> 🎥 **Video to add:** a 2 to 3 minute screen recording of building a playlist. On the MacBook press **Shift + Command + 5** to record the screen. Save it as `docs/videos/propresenter-playlist.mp4`, then replace this box with:
+> **Video needed:** a 2 to 3 minute screen recording of building a playlist. On the MacBook press **Shift + Command + 5** to record the screen. Save it as `docs/videos/propresenter-playlist.mp4`, then replace this box with:
 >
 > `<video controls src="/docs/videos/propresenter-playlist.mp4"></video>`

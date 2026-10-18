@@ -10,4 +10,4 @@ Part of [[checklist:thursday|Thursday Prep]].
 
 [[open:propresenter]]
 
-> ✏️ **To fill in:** how the pastor sends slides (email, shared folder, USB) and when.
+> **To fill in:** how the pastor sends slides (email, shared folder, USB) and when.

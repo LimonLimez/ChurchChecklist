@@ -16,9 +16,9 @@ One place where a new media volunteer can learn everything and follow a checklis
 
 - [ ] Walk through every checklist item and fix anything that doesn't match how we actually do it
 - [ ] Answer: does "verify keys" mean song keys, stream keys, or both?
-- [ ] Fill in every ✏️ **To fill in** box (scene names, who sends slides and when, contacts)
-- [ ] Take screenshots with arrows (Preview → Markup) for every 📸 box
-- [ ] Record short screen videos (Shift + Command + 5) for every 🎥 box
+- [ ] Fill in every **To fill in** box (scene names, who sends slides and when, contacts)
+- [ ] Take screenshots with arrows (Preview → Markup) for every **Screenshot needed** box
+- [ ] Record short screen videos (Shift + Command + 5) for every **Video needed** box
 - [ ] Confirm the app names in `config/apps.json` match what's in `/Applications` on the MacBook
 - [ ] Put a `Start Wiki` shortcut on the MacBook desktop (optional: start it automatically at login)
 
