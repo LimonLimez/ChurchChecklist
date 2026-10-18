@@ -72,6 +72,12 @@ function openButton(id, text, small = false) {
 
 // ---------- Pages ----------
 
+// Images and videos in wiki pages are written as /docs/images/x.png. Make them work in the hosted copy too.
+function fixAssetPaths(root) {
+  if (!window.STATIC_SITE) return;
+  root.querySelectorAll('[src^="/"]').forEach((el) => el.setAttribute('src', Visuals.assetUrl(el.getAttribute('src'))));
+}
+
 async function showPage(slug) {
   const page = state.pages.find((p) => p.slug === slug);
   if (!page) {
@@ -84,6 +90,7 @@ async function showPage(slug) {
   const body = render(page.text) + checklistRefs(page.slug);
   const source = `<p class="page-source">To change this page, edit <code>docs/${escapeHtml(page.slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p>`;
   $('#content').innerHTML = pageFrame(`#/${page.slug}`, page.title, body, source);
+  fixAssetPaths($('#content'));
   buildToc();
   document.title = `${page.title} - Glad Tidings Media Team`;
 }

@@ -14,6 +14,15 @@ A local training wiki and checklist site for the Glad Tidings Church (Anderson, 
 
 To preview on a Windows PC, double-click `Start Wiki (Windows).bat`. Everything works there except the Open-app buttons.
 
+## Sharing it online
+
+The wiki is also published as a plain website on GitHub Pages, so you can send volunteers a link: https://limonlimez.github.io/ChurchChecklist/
+
+- It updates by itself a minute or two after any change is pushed to GitHub.
+- In the online copy, checkmarks are saved in the visitor's own browser, and the Open buttons say they only work on the MacBook. Everything else is the same.
+- To build the online copy on your own computer, run `node scripts/build-static.js`. It writes a `site/` folder you can open or upload anywhere.
+- First-time setup (once): on GitHub, go to the repo's **Settings > Pages** and set **Source** to **GitHub Actions**.
+
 ## Where things are
 
 | Path | What it is |
@@ -24,6 +33,8 @@ To preview on a Windows PC, double-click `Start Wiki (Windows).bat`. Everything 
 | `data/runs/` | Saved checklist progress, one file per day (created automatically, not in git) |
 | `config/apps.json` | Apps the Open buttons are allowed to launch |
 | `server.js` | The small local server (no installs needed beyond Node) |
+| `scripts/build-static.js` | Builds the online copy into `site/` |
+| `.github/workflows/pages.yml` | Publishes the online copy to GitHub Pages |
 | `public/` | The website itself |
 
 See `docs/how-to-edit.md` (or "How to edit this wiki" in the sidebar) for writing pages, adding screenshots, and changing checklists. See [PLAN.md](PLAN.md) for the roadmap.

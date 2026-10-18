@@ -11,8 +11,12 @@ const LOGOS = {
   chrome: '/images/logos/chrome.svg',
 };
 
+// Hosted as plain files (GitHub Pages) the site lives under a folder like /ChurchChecklist/,
+// so a leading slash would point at the wrong place. Drop it there.
+const assetUrl = (url) => (window.STATIC_SITE ? url.replace(/^\//, '') : url);
+
 const logoImg = (id, size = 16) => (LOGOS[id]
-  ? `<img class="logo" src="${LOGOS[id]}" width="${size}" height="${size}" alt="">`
+  ? `<img class="logo" src="${assetUrl(LOGOS[id])}" width="${size}" height="${size}" alt="">`
   : '');
 
 const SCREEN_MAPS = {
@@ -95,4 +99,4 @@ function timeline(id) {
 </figure>`;
 }
 
-window.Visuals = { LOGOS, logoImg, screenMap, timeline };
+window.Visuals = { LOGOS, assetUrl, logoImg, screenMap, timeline };
