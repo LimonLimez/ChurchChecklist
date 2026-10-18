@@ -92,7 +92,7 @@ async function showPage(slug) {
   $('#content').innerHTML = pageFrame(`#/${page.slug}`, page.title, body, source);
   fixAssetPaths($('#content'));
   buildToc();
-  document.title = `${page.title} - Glad Tidings Media Team`;
+  document.title = slug === 'home' ? page.title : `${page.title} - Glad Tidings Media Team`;
 }
 
 // "In the checklists": every checklist step whose how-to points at this page.
