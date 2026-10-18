@@ -109,7 +109,38 @@ a.missing { color: var(--link-missing); }
   background: var(--bg-subtle); border: 1px solid var(--border); border-left: 8px solid var(--notice);
 }
 .content blockquote p { margin: 4px 0; }
-.page-source { margin-top: 48px; padding-top: 8px; border-top: 1px solid var(--border-light); color: var(--muted); font-size: 13px; }
+.page-source { margin-top: 24px; padding-top: 8px; border-top: 1px solid var(--border-light); color: var(--muted); font-size: 13px; }
+
+/* Page frame: article, plus "On this page" on wide screens */
+.page { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; }
+.article { min-width: 0; }
+.toc { display: none; }
+@media (min-width: 1200px) {
+  .page { grid-template-columns: minmax(0, 1fr) 220px; }
+  .toc { display: block; position: sticky; top: 80px; align-self: start; max-height: calc(100vh - 100px); overflow-y: auto; font-size: 14px; }
+}
+.toc:empty { display: none; }
+.toc-title { margin: 0 0 6px; font-weight: 700; }
+.toc ul { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border-light); }
+.toc li a { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 3px 0 3px 12px; margin-left: -1px; border-left: 2px solid transparent; color: var(--muted); }
+.toc li a:hover { color: var(--link); text-decoration: none; }
+.toc li a.active { color: var(--link); border-left-color: var(--link); }
+.toc-count, .phase-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.phase-count { font-family: var(--sans); font-size: 14px; margin-left: 6px; }
+.toc-count.complete, .phase-count.complete { color: var(--done); }
+
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; color: var(--muted); font-size: 13px; }
+.crumbs span[aria-hidden] { color: var(--border); }
+.crumbs [aria-current] { color: var(--text); }
+
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border-light); }
+.pager a { display: flex; flex-direction: column; padding: 10px 14px; border: 1px solid var(--border-light); font-weight: 600; }
+.pager a:hover { border-color: var(--link); text-decoration: none; }
+.pager small { color: var(--muted); font-weight: normal; font-size: 13px; }
+.pager-next { text-align: right; }
+
+.ref-list-title { margin: 12px 0 0; font-weight: 600; }
+.ref-list-title + ul { margin-top: 4px; }
 
 /* Wikipedia infobox */
 .infobox {

@@ -7,7 +7,7 @@
 //   [[map:propresenter]]          clickable map of an app window (public/visuals.js)
 //   [[timeline:sunday]]           picture of when we go live
 
-const state = { pages: [], apps: {}, checklists: [] };
+const state = { pages: [], apps: {}, checklists: [], nav: [] };
 const $ = (sel) => document.querySelector(sel);
 
 const slugify = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -81,10 +81,71 @@ async function showPage(slug) {
       <p>To create it, add a file called <code>docs/${escapeHtml(slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p></blockquote>`;
     return;
   }
-  $('#content').innerHTML = render(page.text) +
-    `<p class="page-source">To change this page, edit <code>docs/${escapeHtml(page.slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p>`;
+  const body = render(page.text) + checklistRefs(page.slug);
+  const source = `<p class="page-source">To change this page, edit <code>docs/${escapeHtml(page.slug)}.md</code>. See ${wikify('[[how-to-edit|How to edit this wiki]]')}.</p>`;
+  $('#content').innerHTML = pageFrame(`#/${page.slug}`, page.title, body, source);
+  buildToc();
   document.title = `${page.title} - Glad Tidings Media Team`;
 }
+
+// "In the checklists": every checklist step whose how-to points at this page.
+function checklistRefs(slug) {
+  const groups = state.checklists
+    .map((c) => ({ c, items: c.phases.flatMap((p) => p.items).filter((i) => i.wiki === slug) }))
+    .filter((g) => g.items.length);
+  if (!groups.length) return '';
+  return `<h2>In the checklists</h2>
+    <p>This page explains these checklist steps:</p>
+    ${groups.map((g) => `
+      <p class="ref-list-title"><a href="#/checklist/${g.c.id}">${escapeHtml(g.c.title)}</a></p>
+      <ul>${g.items.map((i) => `<li>${escapeHtml(i.title)}</li>`).join('')}</ul>`).join('')}`;
+}
+
+// Breadcrumbs on top, "On this page" on the right, previous/next at the bottom.
+// The order and section names come from docs/_sidebar.md.
+function pageFrame(href, title, body, footer = '') {
+  const i = state.nav.findIndex((n) => n.href === href);
+  const here = state.nav[i];
+  const crumbs = here && href !== '#/home'
+    ? `<nav class="crumbs" aria-label="Breadcrumb"><a href="#/home">Main page</a><span aria-hidden="true">›</span>${escapeHtml(here.section)}<span aria-hidden="true">›</span><span aria-current="page">${escapeHtml(title)}</span></nav>`
+    : '';
+  const prev = i > 0 ? state.nav[i - 1] : null;
+  const next = i >= 0 && i < state.nav.length - 1 ? state.nav[i + 1] : null;
+  const pager = i >= 0 ? `
+    <nav class="pager" aria-label="Previous and next page">
+      ${prev ? `<a class="pager-prev" href="${prev.href}"><small>Previous</small>${escapeHtml(prev.text)}</a>` : '<span></span>'}
+      ${next ? `<a class="pager-next" href="${next.href}"><small>Next</small>${escapeHtml(next.text)}</a>` : '<span></span>'}
+    </nav>` : '';
+  return `<div class="page"><article class="article">${crumbs}${body}${pager}${footer}</article><aside class="toc" aria-label="On this page"></aside></div>`;
+}
+
+function buildToc() {
+  const heads = [...document.querySelectorAll('.article h2')];
+  const toc = $('.toc');
+  if (!toc || heads.length < 2) return;
+  heads.forEach((h) => { h.id = `sec-${slugify(h.dataset.label || h.textContent)}`; });
+  toc.innerHTML = `<p class="toc-title">On this page</p><ul>${heads.map((h) => `
+    <li><a href="#" data-target="${h.id}">${escapeHtml(h.dataset.label || h.textContent)}${h.dataset.phase ? ` <span class="toc-count" data-phase-count="${h.dataset.phase}"></span>` : ''}</a></li>`).join('')}</ul>`;
+}
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('.toc a[data-target]');
+  if (!link) return;
+  e.preventDefault();
+  document.getElementById(link.dataset.target)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+});
+
+// Highlight the section you're reading.
+window.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.toc a[data-target]');
+  if (!links.length) return;
+  let current = links[0].dataset.target;
+  links.forEach((a) => {
+    const h = document.getElementById(a.dataset.target);
+    if (h && h.getBoundingClientRect().top < 140) current = a.dataset.target;
+  });
+  links.forEach((a) => a.classList.toggle('active', a.dataset.target === current));
+}, { passive: true });
 
 // ---------- Checklists ----------
 
@@ -142,7 +203,7 @@ async function showChecklist(id, date) {
       </li>`;
   };
 
-  $('#content').innerHTML = `
+  $('#content').innerHTML = pageFrame(`#/checklist/${id}`, list.title, `
     <h1>${escapeHtml(list.title)} checklist</h1>
     <p>${escapeHtml(list.summary)}</p>
     <div class="checklist-bar">
@@ -157,15 +218,23 @@ async function showChecklist(id, date) {
     </div>
     ${list.phases.map((phase) => `
       <section class="phase">
-        <h2>${escapeHtml(phase.title)}</h2>
+        <h2 data-phase="${phase.id}" data-label="${escapeHtml(phase.title)}">${escapeHtml(phase.title)} <span class="phase-count" data-phase-count="${phase.id}"></span></h2>
         <ul class="items">${phase.items.map(itemHtml).join('')}</ul>
       </section>`).join('')}
-    <div id="missed"></div>`;
+    <div id="missed"></div>`);
+  buildToc();
 
   const updateProgress = () => {
     const done = allItems.filter((i) => run.items[i.id]?.done).length;
     $('#progress-text').textContent = `${done} of ${allItems.length} done`;
     $('#progress-fill').style.width = `${(done / allItems.length) * 100}%`;
+    list.phases.forEach((phase) => {
+      const n = phase.items.filter((i) => run.items[i.id]?.done).length;
+      document.querySelectorAll(`[data-phase-count="${phase.id}"]`).forEach((el) => {
+        el.textContent = `${n} of ${phase.items.length}`;
+        el.classList.toggle('complete', n === phase.items.length);
+      });
+    });
     const left = allItems.filter((i) => !run.items[i.id]?.done);
     $('#missed').innerHTML = left.length === 0
       ? `<p class="all-done">All ${allItems.length} items done.</p>`
@@ -421,6 +490,11 @@ async function init() {
     state.apps = Object.fromEntries(apps.apps.map((a) => [a.id, a.label]));
     state.checklists = checklists.checklists;
     $('#sidebar').innerHTML = render(sidebar);
+    let section = '';
+    $('#sidebar').querySelectorAll('h3, a').forEach((el) => {
+      if (el.tagName === 'H3') section = el.textContent.trim();
+      else state.nav.push({ href: el.getAttribute('href'), text: el.textContent.trim(), section });
+    });
     $('#sidebar').querySelectorAll('a').forEach((a) => {
       const slug = a.getAttribute('href').replace('#/', '');
       if (Visuals.LOGOS[slug]) a.insertAdjacentHTML('afterbegin', Visuals.logoImg(slug));
