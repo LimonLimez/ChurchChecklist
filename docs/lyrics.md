@@ -15,8 +15,6 @@ Getting lyrics into [[ProPresenter]] is part of [[checklist:thursday|Thursday Pr
 
 ## Verifying keys
 
-Confirm the song keys and arrangements with the worship leader, so the slides match what's actually sung.
-
-> **Media director:** confirm whether "verify keys" means song keys, [[stream-keys|stream keys]], or both, and update this section.
+Confirm the key and arrangement of each song with the worship leader, so everything on the screens matches what the band plays.
 
 > **Screenshot needed:** the arrangement editor in ProPresenter.

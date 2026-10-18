@@ -47,4 +47,4 @@ Streamlabs calls this **multistreaming**. Sending to both YouTube and Facebook i
 
 The platform you signed in to Streamlabs with always goes live and can't be switched off in the Go Live window.
 
-See also: [[going-live|Going live]], [[stream-keys|Stream keys]].
+See also: [[going-live|Going live]], [[connected-accounts|Connected accounts]].

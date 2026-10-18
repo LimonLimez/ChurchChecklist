@@ -1,7 +1,7 @@
 // Media Team Wiki - front end.
 // Pages live in docs/*.md. Special wiki syntax (works in any page):
 //   [[ProPresenter]]              link to the page "propresenter"
-//   [[stream-keys|Stream keys]]   link with custom text
+//   [[going-live|Going live]]     link with custom text
 //   [[open:propresenter]]         button that opens ProPresenter on the MacBook
 //   [[checklist:sunday]]          link to a checklist
 //   [[map:propresenter]]          clickable map of an app window (public/visuals.js)

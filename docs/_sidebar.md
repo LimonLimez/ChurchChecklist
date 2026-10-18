@@ -16,7 +16,7 @@
 - [[lyrics|Lyrics]]
 - [[sermon-slides|Sermon slides & scripture]]
 - [[announcements|Announcements]]
-- [[stream-keys|Stream keys]]
+- [[connected-accounts|Connected accounts]]
 - [[going-live|Going live]]
 
 ### Reference

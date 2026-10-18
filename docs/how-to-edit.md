@@ -6,7 +6,7 @@ Every page is a simple text file in the `docs` folder. Open one in any text edit
 
 ```
 [[ProPresenter]]                 links to the ProPresenter page
-[[stream-keys|Stream keys]]      links to stream-keys, but shows the words "Stream keys"
+[[going-live|Going live]]       links to going-live, but shows the words "Going live"
 ```
 
 Links to pages that don't exist yet show up in <a class="wikilink missing">red</a>. Click one to see how to create it.

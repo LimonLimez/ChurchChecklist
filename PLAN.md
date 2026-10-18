@@ -9,13 +9,12 @@ One place where a new media volunteer can learn everything and follow a checklis
 - [x] Local wiki site with Wikipedia-style `[[links]]`, sidebar, search, and info boxes
 - [x] Thursday Prep and Sunday Service checklists with checkboxes, names, times, and notes, saved per date
 - [x] "Open app" buttons for ProPresenter, Streamlabs, and Chrome (MacBook only)
-- [x] Starter pages: ProPresenter, Streamlabs, YouTube, Facebook, stream keys, going live, lyrics, sermon slides, announcements, MacBook, troubleshooting, glossary
+- [x] Starter pages: ProPresenter, Streamlabs, YouTube, Facebook, connected accounts, going live, lyrics, sermon slides, announcements, MacBook, troubleshooting, glossary
 - [x] Every checklist item tagged as *person*, *AI could help*, or *could automate*
 
 ## Phase 2: Fill in the real details (needs the media director, on the MacBook)
 
 - [ ] Walk through every checklist item and fix anything that doesn't match how we actually do it
-- [ ] Answer: does "verify keys" mean song keys, stream keys, or both?
 - [ ] Fill in every **To fill in** box (scene names, who sends slides and when, contacts)
 - [ ] Take screenshots with arrows (Preview → Markup) for every **Screenshot needed** box
 - [ ] Record short screen videos (Shift + Command + 5) for every **Video needed** box

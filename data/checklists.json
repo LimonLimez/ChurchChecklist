@@ -56,7 +56,7 @@
             {
               "id": "verify-song-keys",
               "title": "Verify keys",
-              "details": "Confirm the song keys and arrangements with the worship leader so the lyric slides match what will actually be sung. (Media director: confirm this item means song keys and not stream keys. Stream keys have their own item below.)",
+              "details": "Confirm the key and arrangement of each song with the worship leader, so everything on the screens matches what the band plays.",
               "wiki": "lyrics",
               "automation": "manual"
             },
@@ -131,10 +131,10 @@
               "automation": "auto"
             },
             {
-              "id": "verify-stream-keys",
-              "title": "Verify stream keys in Streamlabs",
-              "details": "Make sure Streamlabs is connected to the church YouTube channel and the church Facebook page, and that the stream keys haven't changed.",
-              "wiki": "stream-keys",
+              "id": "check-connections",
+              "title": "Check that YouTube and Facebook are still connected in Streamlabs",
+              "details": "Click Go Live in Streamlabs and make sure the church YouTube channel and Facebook page are both listed and switched on. Close the window without going live.",
+              "wiki": "connected-accounts",
               "app": "streamlabs",
               "automation": "assist"
             },
