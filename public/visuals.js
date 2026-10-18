@@ -49,7 +49,7 @@ function screenMap(id) {
   if (!map) return `<p><em>No screen map called "${id}".</em></p>`;
   const regions = map.regions.map((r, i) => {
     const [x, y, w, h] = r.box;
-    return `<button class="map-region" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%" data-step="${i}" aria-label="${i + 1}. ${r.label}">
+    return `<button class="map-region${w < 12 ? ' narrow' : ''}" title="${r.label}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%" data-step="${i}" aria-label="${i + 1}. ${r.label}">
       <span class="map-num">${i + 1}</span><span class="map-label">${r.label}</span></button>`;
   }).join('');
   const legend = map.regions.map((r, i) => `
